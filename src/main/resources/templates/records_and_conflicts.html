@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Credit Limit Tracker</title>
+</head>
+<body>
+
+<h1>Credit Limit Record</h1>
+<table th:each="record : ${processedRecordList}">
+    <tr>
+        <th>Source File -</th>
+        <td th:text="${record.getSource()}"></td>
+    </tr>
+    <tr>
+        <th>File Type -</th>
+        <td th:text="${record.getSourceType()}"></td>
+    </tr>
+    <br>
+    <tr>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Postcode</th>
+        <th>Phone</th>
+        <th>Credit Limit</th>
+        <th>Birthday</th>
+    </tr>
+    <tr th:each="creditlimit : ${record.getRecords()}">
+        <td th:text="${creditlimit.name}"></td>
+        <td th:text="${creditlimit.address}"></td>
+        <td th:text="${creditlimit.postcode}"></td>
+        <td th:text="${creditlimit.phone}"></td>
+        <td th:text="${creditlimit.creditLimitValue}"></td>
+        <td th:text="${creditlimit.birthday}"></td>
+    </tr>
+    <br>
+    <br>
+</table>
+
+<br>
+<br>
+
+<div th:if="${not #lists.isEmpty(conflicts)}">
+
+    <h1>Credit Limit Conflicts</h1>
+    <br>
+    <br>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Postcode</th>
+            <th>Phone</th>
+            <th>Birthday</th>
+            <th><font color="blue">Credit Limit Conflict</font></th>
+        </tr>
+        <tr th:each="conflict : ${conflicts}">
+            <td th:text="${conflict.creditLimitRecord.name}"></td>
+            <td th:text="${conflict.creditLimitRecord.address}"></td>
+            <td th:text="${conflict.creditLimitRecord.postcode}"></td>
+            <td th:text="${conflict.creditLimitRecord.phone}"></td>
+            <td th:text="${conflict.creditLimitRecord.birthday}"></td>
+            <td th:style="${'color:red'}"
+                th:text="${conflict.creditLimitRecord.sourceWorkbook} + '=' + ${conflict.creditLimitRecord.creditLimitValue} + ', ' + ${conflict.sourceWorkbook} + '=' + ${conflict.creditLimit}"></td>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>

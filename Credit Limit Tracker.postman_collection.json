@@ -1,0 +1,73 @@
+{
+  "info": {
+    "_postman_id": "0adef917-7c88-4982-ac3b-dbe79aa231ab",
+    "name": "Credit Limit Tracker",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Convert to HTML",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "file",
+              "type": "file",
+              "src": [
+                "/Users/vikashkumar/Vikash/BeTest_Vikash_Kumar/Workbook2.csv",
+                "/Users/vikashkumar/Vikash/BeTest_Vikash_Kumar/Workbook2.prn"
+              ]
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:8090/convertToHtml",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8090",
+          "path": [
+            "convertToHtml"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Find Credit Conflicts",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "file",
+              "type": "file",
+              "src": [
+                "/Users/vikashkumar/Vikash/BeTest_Vikash_Kumar/Workbook2.csv",
+                "/Users/vikashkumar/Vikash/BeTest_Vikash_Kumar/Workbook2.prn"
+              ]
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:8090/findConflicts",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8090",
+          "path": [
+            "findConflicts"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
